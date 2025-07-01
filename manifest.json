@@ -24,7 +24,8 @@
   "commands": {
     "mic-note": {
       "suggested_key": {
-        "default": "Ctrl+M"
+        "default": "Ctrl+M",
+        "mac": "Command+M"
       },
       "description": "Activate mic in popup"
     }

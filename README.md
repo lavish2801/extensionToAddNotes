@@ -6,4 +6,9 @@ Features:
 * **Add Notes by Speaking**: Use voice input to dictate your notes, making it even faster and more convenient to capture your thoughts.
 * **Edit and Delete Notes**: Manage your notes with easy edit and delete options.
 * **Instant Access**: Access all your notes instantly from the browser toolbar.
+
+Shortcut to open mic: 
+- windows -> ctrl+m
+- mac -> cmd+m
+
 Stay organized and never lose track of important information with this handy note-taking extension!

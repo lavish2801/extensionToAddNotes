@@ -1,70 +1,139 @@
+.container {
+  border-radius: 80px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  padding: 20px 16px 16px 16px;
+  margin: auto auto;
+  width: auto;
+  max-width: 320px;
+}
 body {
-  font-family: Arial, sans-serif;
-  width: 300px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f6fb;
   margin: 0;
-  padding: 10px;
-  background: #f9f9f9;
+  padding: 0;
+  min-width: 320px;
 }
 h1 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
+  font-size: 1.4em;
+  margin-bottom: 16px;
+  color: #1976d2;
+  letter-spacing: 0.5px;
 }
 #note-form {
   display: flex;
-  gap: 5px;
-  margin-bottom: 10px;
+  gap: 8px;
+  margin-bottom: 14px;
 }
 #note-input {
   flex: 1;
-  padding: 5px;
+  padding: 8px 10px;
+  font-size: 1em;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background: #f9f9f9;
+  transition: border 0.2s;
+}
+#note-input:focus {
+  border: 1.5px solid #1976d2;
+  outline: none;
 }
 button {
-  padding: 5px 10px;
+  padding: 7px 14px;
   border: none;
   background: #1976d2;
   color: #fff;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 1em;
+  transition: background 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-button.delete-btn {
-  background: #e53935;
-  margin-left: 5px;
+button:hover:not([disabled]) {
+  background: #1565c0;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
 }
-button.edit-btn {
-  background: #fbc02d;
-  color: #333;
-  margin-left: 5px;
+button:active:not([disabled]) {
+  background: #0d47a1;
+}
+button[disabled] {
+  background: #ccc;
+  cursor: not-allowed;
+}
+#mic-btn {
+  background: #43a047;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.3em;
+  margin: 0 2px;
+  transition: background 0.2s;
+}
+#mic-btn:hover:not([disabled]) {
+  background: #388e3c;
+}
+#mic-btn:active:not([disabled]) {
+  background: #2e7031;
 }
 #notes-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 .note-item {
-  background: #fff;
-  margin-bottom: 5px;
-  padding: 7px;
-  border-radius: 3px;
+  background: #f9f9f9;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 1px 4px rgba(25, 118, 210, 0.04);
+  font-size: 1.05em;
 }
-#mic-btn {
-  background: #43a047;
-  color: #fff;
+.note-actions {
+  display: flex;
+  gap: 4px;
+}
+button.delete-btn, button.edit-btn {
+  background: none;
+  color: #888;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 1.2em;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  font-size: 1.1em;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 2px;
-  margin-right: 2px;
-  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
-#mic-btn[disabled] {
-  background: #ccc;
-  cursor: not-allowed;
+button.delete-btn:hover {
+  background: #ffeaea;
+  color: #e53935;
+}
+button.edit-btn:hover {
+  background: #fff8e1;
+  color: #fbc02d;
+}
+.mic-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.98em;
+  margin-bottom: 10px;
+  min-height: 1.5em;
+  color: #fff;
+  background: #1976d2;
+  transition: background 0.2s, color 0.2s;
+}
+.mic-badge.error {
+  background: #e53935;
+}
+.mic-badge.listening {
+  background: #fbc02d;
+  color: #333;
 }
 #mic-status {
   margin-top: 8px;

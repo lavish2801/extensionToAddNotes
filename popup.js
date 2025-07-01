@@ -19,23 +19,32 @@ function renderNotes(notes) {
   notesList.innerHTML = '';
   notes.forEach((note, idx) => {
     const li = document.createElement('li');
-    li.textContent = note;
     li.className = 'note-item';
+    const noteText = document.createElement('span');
+    noteText.textContent = note;
+    li.appendChild(noteText);
 
-    // Edit button
+    // Actions container
+    const actions = document.createElement('div');
+    actions.className = 'note-actions';
+
+    // Edit button with SVG icon
     const editBtn = document.createElement('button');
-    editBtn.textContent = 'Edit';
     editBtn.className = 'edit-btn';
+    editBtn.title = 'Edit note';
+    editBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19.5 3 21l1.5-4L16.5 3.5z"/></svg>`;
     editBtn.onclick = () => editNote(idx, note);
 
-    // Delete button
+    // Delete button with SVG icon
     const delBtn = document.createElement('button');
-    delBtn.textContent = 'Delete';
     delBtn.className = 'delete-btn';
+    delBtn.title = 'Delete note';
+    delBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>`;
     delBtn.onclick = () => deleteNote(idx);
 
-    li.appendChild(editBtn);
-    li.appendChild(delBtn);
+    actions.appendChild(editBtn);
+    actions.appendChild(delBtn);
+    li.appendChild(actions);
     notesList.appendChild(li);
   });
 }
@@ -74,9 +83,11 @@ function deleteNote(idx) {
   });
 }
 
-function showMicStatus(message, isError = false) {
+function showMicStatus(message, isError = false, isListening = false) {
   micStatus.textContent = message;
-  micStatus.style.color = isError ? '#e53935' : '#1976d2';
+  micStatus.className = 'mic-badge';
+  if (isError) micStatus.classList.add('error');
+  else if (isListening) micStatus.classList.add('listening');
 }
 
 // Request microphone permission when popup opens
@@ -103,7 +114,7 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
     micBtn.textContent = '🛑';
     micBtn.title = 'Stop listening';
     micBtn.style.background = '#fbc02d';
-    showMicStatus('Listening... Speak now!');
+    showMicStatus('Listening... Speak now!', false, true);
   };
   recognition.onend = () => {
     recognizing = false;

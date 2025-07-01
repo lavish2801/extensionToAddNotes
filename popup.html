@@ -7,14 +7,16 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h1>Quick Notes</h1>
-  <form id="note-form">
-    <input type="text" id="note-input" placeholder="Add a note..." required />
-    <button type="button" id="mic-btn" title="Speak your note" aria-label="Speak your note">🎤</button>
-    <button type="submit">Add</button>
-  </form>
-  <div id="mic-status"></div>
-  <ul id="notes-list"></ul>
+  <div class="container">
+    <h1>Quick Notes</h1>
+    <form id="note-form">
+      <input type="text" id="note-input" placeholder="Add a note..." required />
+      <button type="button" id="mic-btn" title="Speak your note" aria-label="Speak your note">🎤</button>
+      <button type="submit">Add</button>
+    </form>
+    <div id="mic-status" class="mic-badge"></div>
+    <ul id="notes-list"></ul>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html> 

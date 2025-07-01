@@ -57,7 +57,15 @@ noteForm.onsubmit = (e) => {
   chrome.storage.local.get(['notes'], (result) => {
     const notes = result.notes || [];
     notes.push(newNote);
-    chrome.storage.local.set({ notes }, loadNotes);
+    chrome.storage.local.set({ notes }, () => {
+      loadNotes();
+      // Play success sound
+      const successSound = document.getElementById('success-sound');
+      if (successSound) {
+        successSound.currentTime = 0;
+        successSound.play();
+      }
+    });
     noteInput.value = '';
   });
 };

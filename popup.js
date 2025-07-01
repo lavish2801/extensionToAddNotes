@@ -3,6 +3,7 @@ const noteInput = document.getElementById('note-input');
 const notesList = document.getElementById('notes-list');
 const micBtn = document.getElementById('mic-btn');
 const micStatus = document.getElementById('mic-status');
+const clearNoteBtn = document.getElementById('clear-note-btn');
 let recognition;
 let recognizing = false;
 
@@ -165,4 +166,29 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
 }
 
 // Initial load
-loadNotes(); 
+loadNotes();
+
+// Listen for background commands
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.command === 'write-note') {
+    noteInput.focus();
+  } else if (message.command === 'mic-note') {
+    if (!micBtn.disabled) {
+      micBtn.click();
+    }
+  }
+});
+
+noteInput.addEventListener('input', () => {
+  if (noteInput.value.trim()) {
+    clearNoteBtn.style.display = '';
+  } else {
+    clearNoteBtn.style.display = 'none';
+  }
+});
+
+clearNoteBtn.onclick = () => {
+  noteInput.value = '';
+  clearNoteBtn.style.display = 'none';
+  noteInput.focus();
+}; 

@@ -140,4 +140,24 @@ button.edit-btn:hover {
   font-size: 0.95em;
   min-height: 1.5em;
   transition: color 0.2s;
+}
+#clear-note-btn {
+  background: none;
+  color: #888;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  margin-left: -34px;
+  margin-right: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+#clear-note-btn:hover {
+  background: #ffeaea;
+  color: #e53935;
 } 

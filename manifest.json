@@ -20,5 +20,16 @@
   "host_permissions": [
     "http://*/*",
     "https://*/*"
-  ]
+  ],
+  "commands": {
+    "mic-note": {
+      "suggested_key": {
+        "default": "Ctrl+M"
+      },
+      "description": "Activate mic in popup"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
 } 

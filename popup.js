@@ -99,16 +99,16 @@ function showMicStatus(message, isError = false, isListening = false) {
   else if (isListening) micStatus.classList.add('listening');
 }
 
-// Request microphone permission when popup opens
+// // Request microphone permission when popup opens
 navigator.mediaDevices.getUserMedia({ audio: true })
   .then(() => {
     showMicStatus('Click the mic to dictate a note.');
   })
   .catch((err) => {
-    showMicStatus('Microphone blocked. Click the lock icon and allow microphone.', true);
-    micBtn.disabled = true;
-    micBtn.title = 'Microphone blocked. Click the lock icon and allow microphone.';
-    console.warn('Microphone permission denied or not available:', err);
+      micBtn.disabled = true;
+      micBtn.style.opacity = 0.5;
+      micBtn.title = 'Microphone permission denied. Check extension settings and allow microphone.';
+      showMicStatus('Microphone access required for dictation. Check extension settings and allow microphone.', true);
   });
 
 if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
@@ -159,6 +159,7 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
       recognition.start();
     }
   };
+
 } else {
   micBtn.disabled = true;
   micBtn.title = 'Speech recognition not supported in this browser';

@@ -99,17 +99,8 @@ function showMicStatus(message, isError = false, isListening = false) {
   else if (isListening) micStatus.classList.add('listening');
 }
 
-// // Request microphone permission when popup opens
-navigator.mediaDevices.getUserMedia({ audio: true })
-  .then(() => {
-    showMicStatus('Click the mic to dictate a note.');
-  })
-  .catch((err) => {
-      micBtn.disabled = true;
-      micBtn.style.opacity = 0.5;
-      micBtn.title = 'Microphone permission denied. Check extension settings and allow microphone.';
-      showMicStatus('Microphone access required for dictation. Check extension settings and allow microphone.', true);
-  });
+// Set initial guidance message
+showMicStatus('Click the mic to dictate a note.');
 
 if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -153,11 +144,22 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
 
   micBtn.onclick = () => {
     if (micBtn.disabled) return;
-    if (recognizing) {
-      recognition.stop();
-    } else {
-      recognition.start();
-    }
+
+    // Request mic access right before starting recognition, gated by user gesture
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(() => {
+        if (recognizing) {
+          recognition.stop();
+        } else {
+          recognition.start();
+        }
+      })
+      .catch(() => {
+        micBtn.disabled = true;
+        micBtn.style.opacity = 0.5;
+        micBtn.title = 'Microphone permission denied. Check site settings and allow microphone.';
+        showMicStatus('Microphone access required for dictation. Allow microphone in site settings.', true);
+      });
   };
 
 } else {

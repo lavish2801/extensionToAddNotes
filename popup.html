@@ -17,6 +17,17 @@
     </form>
     <div id="mic-status" class="mic-badge"></div>
     <ul id="notes-list"></ul>
+    <div class="retention-row">
+      <label for="keep-done">Keep completed tasks for:</label>
+      <select id="keep-done" title="How long to keep checked items">
+        <option value="forever">Forever</option>
+        <option value="1d">1 day</option>
+        <option value="3d">3 days</option>
+        <option value="1w">1 week</option>
+        <option value="2w">2 weeks</option>
+        <option value="1m">1 month</option>
+      </select>
+    </div>
   </div>
   <audio id="success-sound" src="success.wav" preload="auto"></audio>
   <script src="popup.js"></script>

@@ -81,6 +81,48 @@ button[disabled] {
   padding: 0;
   margin: 0;
 }
+.notes-section-title {
+  list-style: none;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #1976d2;
+  margin: 12px 0 6px 0;
+  padding: 0 2px;
+}
+.notes-section-title:first-child {
+  margin-top: 0;
+}
+.notes-section-title-done {
+  color: #666;
+  margin-top: 14px;
+}
+.retention-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+  flex-wrap: wrap;
+}
+.retention-row label {
+  font-size: 0.9em;
+  color: #555;
+}
+.retention-row select {
+  padding: 6px 10px;
+  font-size: 0.9em;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background: #f9f9f9;
+  color: #333;
+  cursor: pointer;
+  min-width: 100px;
+}
+.retention-row select:focus {
+  border-color: #1976d2;
+  outline: none;
+}
 .note-item {
   background: #f9f9f9;
   margin-bottom: 8px;
@@ -89,8 +131,29 @@ button[disabled] {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
   box-shadow: 0 1px 4px rgba(25, 118, 210, 0.04);
   font-size: 1.05em;
+  transition: opacity 0.2s, background 0.2s;
+}
+.note-item-done {
+  opacity: 0.55;
+  background: #e8e8e8;
+}
+.note-item-done .note-text {
+  text-decoration: line-through;
+  color: #666;
+}
+.note-checkbox {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #1976d2;
+}
+.note-text {
+  flex: 1;
+  min-width: 0;
 }
 .note-actions {
   display: flex;

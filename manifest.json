@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Quick Notes",
-  "version": "1.0",
+  "version": "2.0.0",
   "description": "Add and manage notes, stored locally in your browser.",
   "action": {
     "default_popup": "popup.html",

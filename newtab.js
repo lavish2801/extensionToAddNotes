@@ -1,4 +1,43 @@
 (function () {
+  // Shooting stars: random count (max 5) on load and at random times, slower speed
+  const shootingStarsEl = document.getElementById('shooting-stars');
+  const SHOOTING_STAR_MAX_COUNT = 3;
+  const SHOOTING_STAR_DURATION_MIN = 1.8;
+  const SHOOTING_STAR_DURATION_MAX = 3.2;
+
+  function fireShootingStar() {
+    if (!shootingStarsEl) return;
+    const star = document.createElement('div');
+    star.className = 'shooting-star';
+    const angle = Math.random() * 360;
+    star.style.setProperty('--angle', angle + 'deg');
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 1 + '%';
+    const duration = SHOOTING_STAR_DURATION_MIN + Math.random() * (SHOOTING_STAR_DURATION_MAX - SHOOTING_STAR_DURATION_MIN);
+    star.style.animationDuration = duration + 's';
+    shootingStarsEl.appendChild(star);
+    star.addEventListener('animationend', () => star.remove());
+  }
+
+  function fireShootingStars() {
+    const count = 1 + Math.floor(Math.random() * SHOOTING_STAR_MAX_COUNT);
+    for (let i = 0; i < count; i++) {
+      setTimeout(fireShootingStar, i * 250);
+    }
+  }
+
+  if (shootingStarsEl) {
+    fireShootingStars();
+    function scheduleNext() {
+      const delay = 2500 + Math.random() * 5000;
+      setTimeout(() => {
+        fireShootingStars();
+        scheduleNext();
+      }, delay);
+    }
+    scheduleNext();
+  }
+
   function normalizeNotes(raw) {
     if (!Array.isArray(raw)) return [];
     const now = Date.now();

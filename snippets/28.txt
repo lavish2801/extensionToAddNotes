@@ -1,0 +1,11 @@
+# Python — list comprehension, enumerate, zip
+# Build a list and pair with index in one go
+items = ["apple", "banana", "cherry"]
+squared = [x.upper() for x in items]           # list comprehension
+for i, name in enumerate(squared, start=1):    # enumerate(index, value)
+    print(f"{i}: {name}")
+
+# zip: loop two lists together
+keys = ["a", "b", "c"]
+vals = [1, 2, 3]
+pairs = dict(zip(keys, vals))   # {'a': 1, 'b': 2, 'c': 3}

@@ -1,0 +1,21 @@
+# Zip Function: Combine two lists into pairs
+names = ["Alice", "Bob"]
+scores = [85, 92]
+combined = dict(zip(names, scores))
+# Meaning: Creates {'Alice': 85, 'Bob': 92}
+
+# Decorators: Add "extra" logic to a function without changing it
+def log_action(func):
+    def wrapper():
+        print("Starting...")
+        func()
+        print("Done!")
+    return wrapper
+
+# List Slicing: Reverse a string or list instantly
+original = "Python"
+reversed_str = original[::-1] # Output: "nohtyP"
+
+# Enumerate: Get the index and the value at the same time
+for index, val in enumerate(["a", "b", "c"]):
+    print(f"Item {index} is {val}")

@@ -1,0 +1,6 @@
+* Constants: Values that never change
+public static final double PI = 3.14159;
+
+* Stream API: Filter data elegantly
+long count = names.stream().filter(s -> s.startsWith("A")).count();
+// Meaning: Counts how many names start with "A"

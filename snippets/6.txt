@@ -1,0 +1,16 @@
+// This function performs a mathematical operation provided by the user
+function smartCalculator(num1, num2, operationFunc) {
+    console.log("Processing calculation...");
+    
+    // We execute whatever function was passed into 'operationFunc'
+    return operationFunc(num1, num2);
+}
+
+// Defining different "operation" functions
+const add = (a, b) => a + b;
+const multiply = (a, b) => a * b;
+
+// USAGE:
+// We pass 'add' or 'multiply' as a variable, NOT as a function call (no parentheses)
+console.log(smartCalculator(10, 5, add));      // Output: 15
+console.log(smartCalculator(10, 5, multiply)); // Output: 50

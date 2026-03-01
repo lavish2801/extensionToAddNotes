@@ -1,0 +1,6 @@
+
+/* Aspect Ratio: Keep a box perfectly square */
+.square-box {
+    aspect-ratio: 1 / 1;
+    width: 200px;
+}

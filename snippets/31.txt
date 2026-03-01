@@ -1,0 +1,13 @@
+// C++ — range-based for, auto, STL vector/map
+#include <vector>
+#include <map>
+#include <string>
+
+std::vector<int> v = {1, 2, 3, 4, 5};
+for (auto& x : v) { x *= 2; }   // range-based for, modify in place
+
+std::map<std::string, int> m = {{"a", 1}, {"b", 2}};
+for (const auto& [key, val] : m)   // structured binding (C++17)
+    std::cout << key << " => " << val << "\n";
+
+auto it = v.begin();   // auto deduces iterator type

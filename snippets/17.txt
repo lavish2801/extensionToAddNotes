@@ -1,0 +1,17 @@
+#  List Comprehension: Create a new list in one line
+squares = [x**2 for x in range(10) if x % 2 == 0]
+# Meaning: Square every even number from 0-9
+
+# Dictionary Get: Access data without crashing if the key is missing
+user = {"name": "Alice"}
+email = user.get("email", "no-reply@example.com")
+# Usage: Safely assigns a default value if "email" doesn't exist
+
+# F-Strings: Modern way to inject variables into strings
+price = 19.99
+print(f"The total cost is ${price:.2f}") 
+# Usage: formats the number to 2 decimal places
+
+# Lambda Functions: Anonymous one-line functions
+add_tax = lambda p: p * 1.15
+# Usage: Useful for quick calculations inside other functions

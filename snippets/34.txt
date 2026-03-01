@@ -1,0 +1,15 @@
+<!-- HTML — semantic elements, a11y, form attributes -->
+<article>
+  <header><h1>Post title</h1></header>
+  <main>Content here.</main>
+  <footer><time datetime="2025-02-28">Feb 28, 2025</time></footer>
+</article>
+
+<!-- Accessibility: label + id, aria-label for icons -->
+<label for="email">Email</label>
+<input id="email" type="email" required aria-required="true" />
+
+<!-- Form: name (submit), placeholder, autocomplete -->
+<input name="username" placeholder="Username" autocomplete="username" />
+
+<button type="submit">Submit</button>

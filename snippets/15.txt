@@ -1,0 +1,19 @@
+def get_short_names(name_list):
+    # Create an empty list to store our results
+    filtered_list = []
+    
+    # 'for name in name_list' starts a loop to check every item one by one
+    for name in name_list:
+        # Check if the length of the string is less than 5 characters
+        if len(name) < 5:
+            # If the condition is met, add it to our new list
+            filtered_list.append(name)
+            
+    # Once the loop is totally finished, return the gathered names
+    return filtered_list
+
+# USAGE:
+users = ["Christopher", "Ava", "Jonathan", "Mia", "Blake"]
+# We pass the 'users' list into our function
+short_ones = get_short_names(users)
+print(short_ones) # Output: ['Ava', 'Mia']

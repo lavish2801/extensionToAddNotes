@@ -1,0 +1,17 @@
+
+/* CSS Variables: Store colors for easy updates */
+:root {
+    --brand-blue: #007bff;
+}
+.button { background-color: var(--brand-blue); }
+
+/* Media Queries: Making a site "Responsive" for phones */
+@media (max-width: 600px) {
+    .sidebar { display: none; } /* Hide sidebar on small screens */
+}
+
+/* Hover Effects: Adding interactivity */
+.card:hover {
+    transform: scale(1.05); /* Meaning: Grows slightly on hover */
+    transition: 0.3s;       /* Smooth animation */
+}

@@ -1,0 +1,13 @@
+// 'function' keyword starts the declaration
+// 'multiply' is our function name
+function multiply(a, b) {
+  // We perform the calculation inside the curly braces
+  const result = a * b;
+  
+  // 'return' sends the value back and ends the function
+  return result;
+}
+
+// USAGE: We call it by name and pass in two numbers
+const product = multiply(5, 10);
+console.log(product); // Output: 50

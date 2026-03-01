@@ -1,0 +1,15 @@
+const userProfile = {
+    username: "CodeMaster99",
+    points: 150,
+    
+    // This is a method. It uses 'this' to refer to its own object.
+    levelUp: function(bonus) {
+        // 'this.points' refers to the points inside THIS object
+        this.points = this.points + bonus;
+        return `${this.username} now has ${this.points} points!`;
+    }
+};
+
+// USAGE:
+// We call the function using "dot notation"
+console.log(userProfile.levelUp(50)); // Output: "CodeMaster99 now has 200 points!"

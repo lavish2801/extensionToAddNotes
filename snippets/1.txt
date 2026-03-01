@@ -1,0 +1,11 @@
+def check_temp(celsius):
+    if celsius > 30:
+        return "It's a scorcher! ☀️"
+    elif celsius < 10:
+        return "Grab a jacket. ❄️"
+    else:
+        return "Perfect weather. ☁️"
+
+# Usage:
+current_weather = check_temp(22)
+print(f"The verdict is: {current_weather}")

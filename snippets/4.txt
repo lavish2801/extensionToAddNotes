@@ -1,0 +1,16 @@
+// Imagine we imported 'format' and 'addDays' from the date-fns library
+// const { format, addDays } = require('date-fns');
+
+function getSubscriptionExpiry(startDate) {
+    // 1. We use a library function to add 30 days to the start date
+    const expiryDate = addDays(new Date(startDate), 30);
+    
+    // 2. We use another library function to turn that date into a readable string
+    // 'eeee' = Day of week, 'MMMM' = Month name, 'do' = Day of month
+    return format(expiryDate, "eeee, MMMM do, yyyy");
+}
+
+// USAGE:
+const today = "2026-03-01";
+console.log(`Your sub expires on: ${getSubscriptionExpiry(today)}`);
+// Output: "Your sub expires on: Tuesday, March 31st, 2026"

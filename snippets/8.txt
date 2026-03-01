@@ -1,0 +1,15 @@
+* 'async' tells JS this function will involve waiting
+async function fetchWeather() {
+    console.log("Fetching data...");
+
+    // 'await' stops the code here until the "server" responds
+    // (Pretend this is a real website URL)
+    const response = await fetch("https://api.weather.com/today");
+    const data = await response.json();
+
+    // This line won't run until the data is fully downloaded
+    return `The temperature is ${data.temp} degrees.`;
+}
+
+// USAGE:
+// fetchWeather().then(result => console.log(result));

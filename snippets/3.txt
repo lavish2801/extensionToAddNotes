@@ -1,0 +1,16 @@
+// axios.get() is a function provided by the library
+async function getUserData(userId) {
+    try {
+        // The library handles the 'waiting' and the JSON conversion for us
+        const response = await axios.get(`https://api.example.com/users/${userId}`);
+        
+        // We return just the data part of the response
+        return response.data;
+    } catch (error) {
+        // Libraries make "Error Handling" much cleaner
+        console.error("User not found!", error.message);
+    }
+}
+
+// USAGE:
+// getUserData(101).then(user => console.log(user.name));

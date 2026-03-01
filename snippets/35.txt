@@ -1,0 +1,16 @@
+* Enhanced For-Loop (For-Each)
+String[] tools = {"Hammer", "Drill", "Saw"};
+for (String tool : tools) {
+    System.out.println("Using: " + tool);
+}
+
+* ArrayList: A list that can grow in size
+List<Integer> scores = new ArrayList<>();
+scores.add(95); // Meaning: Adds element to the end
+
+* Try-Catch: Handling errors gracefully
+try {
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("Cannot divide by zero!");
+}

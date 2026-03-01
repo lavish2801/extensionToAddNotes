@@ -1,0 +1,8 @@
+* Interface: Defining a "Contract" for classes
+interface Playable {
+    void play(); // Any class using this MUST have a play() method
+}
+
+* Lambda Expression (Java 8+): Short way to write logic
+List<String> names = Arrays.asList("Apple", "Banana");
+names.forEach(n -> System.out.println(n));

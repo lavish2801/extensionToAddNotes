@@ -1,0 +1,8 @@
+* Basic Class Structure
+public class Robot {
+    private String model; // Variable restricted to this class
+    
+    public Robot(String m) { this.model = m; } // Constructor to initialize
+    
+    public void greet() { System.out.println("Hello, I am " + model); }
+}

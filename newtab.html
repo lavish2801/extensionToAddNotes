@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Tab — Quick Notes</title>
+  <link rel="stylesheet" href="newtab.css">
+</head>
+<body>
+  <div class="random-website-wrap">
+    <p class="random-website-label">Click To Visit A Random Site:</p>
+    <a href="#" id="random-website-btn" class="random-website-btn" title="Open a random website"><span id="random-website-btn-text">Random website</span></a>
+  </div>
+  <div class="wallpaper">
+    <div class="snippet-background" id="snippet-background">
+      <pre><code id="snippet-code"></code></pre>
+    </div>
+    <div class="right-panel">
+      <div class="content">
+      <div class="datetime" id="datetime">
+        <span id="datetime-date"></span>
+        <span id="datetime-time"></span>
+      </div>
+      <h1 class="title">To Do</h1>
+      <ul id="undone-list"></ul>
+      <p id="empty-message" class="empty-message" hidden>Great! All tasks are done. Add notes from the extension.</p>
+      <a href="#" id="open-extension" class="open-extension">Open Quick Notes</a>
+      </div>
+    </div>
+  </div>
+  <script src="newtab.js"></script>
+</body>
+</html>

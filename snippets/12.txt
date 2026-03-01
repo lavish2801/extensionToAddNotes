@@ -1,0 +1,15 @@
+// We store the function inside a variable (const)
+// The '=>' (fat arrow) replaces the 'function' keyword
+const scream = (text) => {
+  // Convert text to uppercase and add exclamation marks
+  const loudText = text.toUpperCase() + "!!!";
+  return loudText;
+};
+
+// SHORTHAND: If the function is only one line, 
+// you can skip the 'return' and the curly braces!
+const addFive = (num) => num + 5;
+
+// USAGE:
+console.log(scream("hello")); // Output: "HELLO!!!"
+console.log(addFive(10));      // Output: 15

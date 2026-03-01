@@ -1,0 +1,6 @@
+/* CSS Grid: Complex layouts made simple */
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Three columns */
+    gap: 10px;
+}

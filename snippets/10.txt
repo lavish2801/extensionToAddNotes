@@ -1,0 +1,12 @@
+const numbers = [1, 2, 3, 4, 5];
+
+// .map() goes through the array and runs the arrow function for each item
+// 'n' represents the current number in the loop
+const doubled = numbers.map(n => {
+    const result = n * 2; // We double it
+    return result;        // The new value goes into the new array
+});
+
+// USAGE:
+console.log(doubled); // Output: [2, 4, 6, 8, 10]
+// Note: The original 'numbers' array remains unchanged!

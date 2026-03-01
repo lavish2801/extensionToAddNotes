@@ -1,0 +1,15 @@
+const orderItems = [
+    { item: "Laptop", price: 1200 },
+    { item: "Mouse", price: 25 },
+    { item: "Keyboard", price: 75 }
+];
+
+// .reduce() takes two arguments: an "accumulator" (running total) 
+// and the "currentValue" (the item we are currently looking at)
+const checkoutTotal = orderItems.reduce((total, product) => {
+    // We add the current product's price to our running total
+    return total + product.price;
+}, 0); // This '0' is the starting value for the 'total'
+
+// USAGE:
+console.log(`Your final bill is: $${checkoutTotal}`); // Output: 1300

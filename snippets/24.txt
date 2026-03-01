@@ -1,0 +1,16 @@
+* Auto Keyword: Let the compiler guess the type
+auto x = 5.5; // x is automatically a 'double'
+
+* Ternary Operator: One-line If/Else
+int age = 20;
+string status = (age >= 18) ? "Adult" : "Minor";
+
+* Structs: Grouping different data types together
+struct User {
+    int id;
+    string name;
+};
+
+* Constant Pointers: Prevent data from being changed
+const int* p = &age; 
+// Meaning: You can see the value, but you can't change it through 'p'

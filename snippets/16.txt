@@ -1,0 +1,17 @@
+# 'def' tells Python we are DEFINING a function
+# 'calculate_total' is the name we chose
+# 'price' and 'tax_rate' are the placeholders (parameters)
+def calculate_total(price, tax_rate):
+    # We calculate the tax amount first
+    tax_amount = price * tax_rate
+    
+    # We add the tax to the original price
+    total = price + tax_amount
+    
+    # 'return' sends the final value back to the rest of the program
+    return total
+
+# USAGE: We provide the actual numbers (arguments)
+# 100 goes to 'price', 0.08 goes to 'tax_rate'
+final_bill = calculate_total(100, 0.08)
+print(f"Total price: ${final_bill}") # Output: 108.0

@@ -1,0 +1,17 @@
+<video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<details>
+  <summary>Click to read more</summary>
+  <p>This content is hidden until you click!</p>
+</details>
+
+<picture>
+  <source media="(min-width: 800px)" srcset="large.jpg">
+  <img src="small.jpg" alt="Responsive Image">
+</picture>
+
+<input type="radio" id="dev" name="job" value="dev">
+<label for="dev">Developer</label>

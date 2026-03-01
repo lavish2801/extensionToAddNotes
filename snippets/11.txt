@@ -1,0 +1,9 @@
+// If 'currency' isn't provided, it defaults to "$"
+function formatPrice(amount, currency = "$") {
+  // We use backticks (``) for Template Literals to inject variables
+  return `${currency}${amount}`;
+}
+
+// USAGE:
+console.log(formatPrice(99));        // Output: "$99" (uses default)
+console.log(formatPrice(50, "€"));   // Output: "€50" (overrides default)

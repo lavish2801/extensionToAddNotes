@@ -1,0 +1,16 @@
+// TypeScript — types, interface, generics
+interface User {
+  id: number;
+  name: string;
+  email?: string;   // optional
+}
+
+function getById<T>(id: number, items: T[]): T | undefined {
+  return items.find((item: any) => item.id === id);
+}
+
+const user: User = { id: 1, name: "Alice" };
+const found = getById<User>(1, [user]);  // generic preserves type
+
+// type assertion when you know better than the compiler
+const input = document.getElementById("name") as HTMLInputElement;

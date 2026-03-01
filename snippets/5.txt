@@ -1,0 +1,25 @@
+// Instead of (name, age, city), we use { curly braces } 
+// to "extract" specifically named keys from an object.
+function createUserCard({ name, role, isAdmin = false }) {
+    // The order doesn't matter anymore!
+    const status = isAdmin ? "🔴 ADMIN" : "🟢 USER";
+    
+    return `
+    ----------------------
+    NAME: ${name}
+    ROLE: ${role}
+    STATUS: ${status}
+    ----------------------
+    `;
+}
+
+// USAGE:
+const user = {
+    role: "Developer",
+    name: "Jordan",
+    location: "New York", // This is ignored by the function
+    isAdmin: true
+};
+
+// Even if 'user' has 20 properties, the function only takes what it needs
+console.log(createUserCard(user));

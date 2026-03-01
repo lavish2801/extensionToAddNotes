@@ -1,0 +1,7 @@
+def greet_user(name):
+    # This function takes a string and returns a personalized greeting
+    message = f"Hello, {name}! Ready to build something cool today?"
+    return message
+
+# Usage:
+print(greet_user("Alex"))

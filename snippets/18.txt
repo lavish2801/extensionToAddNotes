@@ -1,0 +1,20 @@
+* Pointers: Storing the address of a variable
+int score = 100;
+int* ptr = &score; 
+// Meaning: 'ptr' now holds the memory address of 'score'
+
+Vectors: The standard dynamic array in C++
+#include <vector>
+std::vector<int> nums = {1, 2, 3};
+nums.push_back(4); // Usage: Adds 4 to the end of the vector
+
+* Switch Statement: Clean alternative to multiple IFs
+char grade = 'A';
+switch(grade) {
+    case 'A': cout << "Excellent"; break;
+    default: cout << "Keep trying";
+}
+
+* References: Creating an alias for a variable
+void doubleVal(int &n) { n *= 2; }
+// Usage: Changing 'n' inside here changes the original variable outside

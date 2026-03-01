@@ -1,0 +1,6 @@
+/* Flexbox: The easiest way to center elements */
+.container {
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center */
+}

@@ -1,0 +1,11 @@
+# Ruby — blocks, Enumerable, symbols
+nums = [1, 2, 3, 4, 5]
+doubled = nums.map { |n| n * 2 }        # block with { }
+evens  = nums.select { |n| n.even? }   # select = filter
+
+# symbols as lightweight labels (often used as hash keys)
+person = { name: "Alice", age: 30 }    # same as :name => "Alice"
+person[:name]   # => "Alice"
+
+# each_with_index
+["a", "b", "c"].each_with_index { |letter, i| puts "#{i}: #{letter}" }

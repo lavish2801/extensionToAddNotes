@@ -1,0 +1,14 @@
+// Node.js — fs/promises, path, async/await
+const fs = require('fs').promises;
+const path = require('path');
+
+async function readConfig(dir) {
+  const filePath = path.join(dir, 'config.json');
+  const data = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(data);
+}
+
+// path helpers: join, basename, extname, resolve
+const full = path.join(__dirname, 'data', 'file.txt');
+const name = path.basename(full);      // 'file.txt'
+const ext  = path.extname(full);      // '.txt'

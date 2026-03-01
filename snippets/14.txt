@@ -1,0 +1,13 @@
+def divide_funds(total_money, people):
+    # GUARD CLAUSE: If people is 0, the program would crash (ZeroDivisionError)
+    # We check for this problem immediately.
+    if people <= 0:
+        return "Error: You need at least one person to divide money."
+
+    # If the check above passes, the function continues to the math
+    share = total_money / people
+    return f"Each person gets: ${share}"
+
+# USAGE:
+print(divide_funds(100, 4))  # Works fine: $25.0
+print(divide_funds(100, 0))  # Triggers the error message instead of crashing

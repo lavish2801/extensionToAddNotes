@@ -1,0 +1,11 @@
+// Java — Streams, Optional, method reference
+List<String> names = List.of("alice", "bob", "carol");
+List<String> upper = names.stream()
+    .map(String::toUpperCase)           // method reference
+    .filter(s -> s.length() > 3)
+    .toList();
+
+Optional<String> first = names.stream().findFirst();
+first.ifPresent(System.out::println);   // safe if present
+
+String fallback = first.orElse("none"); // default if empty

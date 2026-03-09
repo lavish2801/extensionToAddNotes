@@ -486,7 +486,8 @@
   }
 
   // Random code snippet from snippets folder (add new files here)
-  const SNIPPET_FILES = ['snippets/1.txt', 'snippets/2.txt', 'snippets/3.txt', 
+  
+  /*const SNIPPET_FILES = ['snippets/1.txt', 'snippets/2.txt', 'snippets/3.txt', 
     'snippets/4.txt', 'snippets/5.txt', 'snippets/6.txt', 'snippets/7.txt', 
     'snippets/8.txt', 'snippets/9.txt', 'snippets/10.txt', 'snippets/11.txt', 
     'snippets/12.txt', 'snippets/13.txt', 'snippets/14.txt', 'snippets/15.txt', 'snippets/16.txt', 
@@ -506,4 +507,5 @@
       })
       .catch(() => { snippetBg.hidden = true; });
   }
+  */
 })();

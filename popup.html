@@ -7,18 +7,31 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Quick Notes</h1>
-    <form id="note-form">
-      <input type="text" id="note-input" placeholder="Add a note..." required />
-      <button type="button" id="clear-note-btn" title="Clear note" aria-label="Clear note" style="display:none">✖</button>
-      <button type="button" id="mic-btn" title="Speak your note" aria-label="Speak your note">🎤</button>
-      <button type="submit">Add</button>
-    </form>
-    <div id="mic-status" class="mic-badge"></div>
-    <ul id="notes-list"></ul>
-    <div class="retention-row">
-      <label for="keep-done">Keep completed tasks for:</label>
+  <div class="popup">
+    <header class="popup-header">
+      <h1 class="popup-title">Quick Notes</h1>
+    </header>
+
+    <section class="add-section">
+      <form id="note-form" class="note-form">
+        <div class="input-wrap">
+          <input type="text" id="note-input" placeholder="Add a note..." required autocomplete="off" />
+          <button type="button" id="clear-note-btn" class="icon-btn icon-btn-clear" title="Clear" aria-label="Clear" hidden>×</button>
+        </div>
+        <div class="form-actions">
+          <button type="button" id="mic-btn" class="icon-btn icon-btn-mic" title="Speak your note" aria-label="Speak your note">🎤</button>
+          <button type="submit" class="btn-add"><span class="btn-add-icon" aria-hidden="true">+</span> Add</button>
+        </div>
+      </form>
+      <div id="mic-status" class="mic-badge" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="notes-section">
+      <ul id="notes-list" class="notes-list"></ul>
+    </section>
+
+    <footer class="popup-footer">
+      <label for="keep-done" class="retention-label">Keep completed</label>
       <select id="keep-done" title="How long to keep checked items">
         <option value="forever">Forever</option>
         <option value="1d">1 day</option>
@@ -27,9 +40,9 @@
         <option value="2w">2 weeks</option>
         <option value="1m">1 month</option>
       </select>
-    </div>
+    </footer>
   </div>
   <audio id="success-sound" src="success.wav" preload="auto"></audio>
   <script src="popup.js"></script>
 </body>
-</html> 
+</html>

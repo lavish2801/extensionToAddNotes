@@ -271,15 +271,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 noteInput.addEventListener('input', () => {
-  if (noteInput.value.trim()) {
-    clearNoteBtn.style.display = '';
-  } else {
-    clearNoteBtn.style.display = 'none';
-  }
+  clearNoteBtn.hidden = !noteInput.value.trim();
 });
 
 clearNoteBtn.onclick = () => {
   noteInput.value = '';
-  clearNoteBtn.style.display = 'none';
+  clearNoteBtn.hidden = true;
   noteInput.focus();
 }; 

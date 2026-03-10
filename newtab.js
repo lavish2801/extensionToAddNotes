@@ -88,7 +88,8 @@
   }
 
   function render(notes) {
-    const undone = notes.filter((n) => !n.done);
+    const withIndex = notes.map((n, i) => ({ note: n, idx: i }));
+    const undone = withIndex.filter((x) => !x.note.done);
     listEl.innerHTML = '';
     listEl.classList.toggle('undone-list-multi', undone.length > 5);
     if (undone.length === 0) {
@@ -96,10 +97,34 @@
       return;
     }
     emptyEl.hidden = true;
-    undone.forEach((note) => {
+    undone.forEach(({ note, idx }, i) => {
       const li = document.createElement('li');
       li.className = 'undone-item';
-      li.textContent = note.text;
+      li.style.animationDelay = (i * 0.06) + 's';
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.className = 'undone-checkbox';
+      checkbox.title = 'Mark as done';
+      checkbox.setAttribute('aria-label', 'Mark as done');
+      checkbox.addEventListener('change', () => {
+        if (!checkbox.checked) return;
+        li.classList.add('undone-item--out');
+        li.addEventListener('animationend', () => {
+          chrome.storage.local.get(['notes'], (result) => {
+            const list = normalizeNotes(result.notes);
+            if (idx >= 0 && idx < list.length) {
+              list[idx].done = true;
+              list[idx].doneAt = Date.now();
+              chrome.storage.local.set({ notes: list }, () => render(list));
+            }
+          });
+        }, { once: true });
+      });
+      const text = document.createElement('span');
+      text.className = 'undone-item-text';
+      text.textContent = note.text;
+      li.appendChild(checkbox);
+      li.appendChild(text);
       listEl.appendChild(li);
     });
   }

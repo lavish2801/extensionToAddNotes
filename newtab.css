@@ -118,6 +118,106 @@ body {
   margin-top: 0.25rem;
 }
 
+/* Calendar section — simple link */
+.calendar-section {
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+.calendar-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.calendar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.calendar-link:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.calendar-link--secondary {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.calendar-link--secondary:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.calendar-icon,
+.calendar-icon--gmail {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.calendar-icon {
+  background: #1a73e8;
+}
+
+.calendar-icon::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+.calendar-icon::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  height: 5px;
+  background: #1a73e8;
+  border-radius: 2px 2px 0 0;
+}
+
+.calendar-icon--gmail {
+  background: #ffffff;
+}
+
+.calendar-icon--gmail::before,
+.calendar-icon--gmail::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 2px;
+  border: 2px solid transparent;
+}
+
+.calendar-icon--gmail::before {
+  border-top-color: #ea4335;
+  border-left-color: #ea4335;
+  border-bottom-color: #34a853;
+}
+
+.calendar-icon--gmail::after {
+  border-top-color: #4285f4;
+  border-right-color: #4285f4;
+  border-bottom-color: #fbbc05;
+}
+
 /* To Do title */
 .title {
   font-size: 0.75rem;
@@ -131,7 +231,18 @@ body {
   width: 100%;
 }
 
-/* Undone list */
+/* Undone list — enter animation */
+@keyframes undone-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 #undone-list {
   list-style: none;
   padding: 0;
@@ -150,6 +261,9 @@ body {
 }
 
 .undone-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
   background: rgba(255, 255, 255, 0.04);
@@ -159,6 +273,8 @@ body {
   font-size: 0.95rem;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.92);
+  opacity: 0;
+  animation: undone-item-in 0.4s ease-out forwards;
   transition: background 0.2s, box-shadow 0.2s, border-left-color 0.2s;
 }
 
@@ -170,6 +286,75 @@ body {
 
 .undone-item:last-child {
   margin-bottom: 0;
+}
+
+.undone-item-text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Checkbox — animated */
+.undone-checkbox {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 5px;
+  border: 2px solid rgba(148, 163, 184, 0.9);
+  background: rgba(15, 23, 42, 0.7);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.undone-checkbox::after {
+  content: '';
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid #0ea5e9;
+  border-bottom: 2px solid #0ea5e9;
+  border-radius: 1px;
+  transform: scale(0) rotate(-45deg) translateY(-1px);
+  transform-origin: center;
+  opacity: 0;
+  transition: transform 0.18s ease-out, opacity 0.18s ease-out;
+}
+
+.undone-checkbox:hover {
+  transform: scale(1.06);
+  border-color: rgba(148, 163, 184, 1);
+  box-shadow: 0 0 0 2px rgba(148, 163, 184, 0.25);
+}
+
+.undone-checkbox:active {
+  transform: scale(0.96);
+}
+
+.undone-checkbox:checked {
+  background: rgba(37, 99, 235, 0.2);
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.3);
+}
+
+.undone-checkbox:checked::after {
+  opacity: 1;
+  transform: scale(1) rotate(-45deg) translateY(-1px);
+}
+
+/* Exit animation when task is marked done */
+.undone-item--out {
+  animation: undone-item-out 0.3s ease-in forwards;
+}
+
+@keyframes undone-item-out {
+  to {
+    opacity: 0;
+    transform: translateX(-8px) scale(0.98);
+  }
 }
 
 /* Empty state */

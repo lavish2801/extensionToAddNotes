@@ -12,3 +12,7 @@ Shortcut to open mic:
 - mac -> cmd+m
 
 Stay organized and never lose track of important information with this handy note-taking extension!
+
+### Google Calendar (new tab)
+
+The new tab includes an **Open Google Calendar** link that opens [calendar.google.com](https://calendar.google.com) in a new tab. No sign-in or config in the extension—you use your normal Google account in the browser.

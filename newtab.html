@@ -36,11 +36,20 @@
           </a>
         </div>
       </section>
-      <h1 class="title">To Do</h1>
-      <ul id="undone-list"></ul>
+      <h1 class="title" id="todo-title">To Do</h1>
+      <div class="undone-list-wrap">
+        <ul id="undone-list"></ul>
+      </div>
       <p id="empty-message" class="empty-message" hidden>Great! All tasks are done. Add notes from the extension.</p>
       <a href="#" id="open-extension" class="open-extension">Open Quick Notes</a>
       </div>
+    </div>
+  </div>
+  <div id="note-overlay" class="note-overlay" hidden aria-hidden="true">
+    <div class="note-overlay-backdrop"></div>
+    <div class="note-overlay-window">
+      <button type="button" class="note-overlay-close" aria-label="Close">×</button>
+      <div class="note-overlay-text"></div>
     </div>
   </div>
   <script src="newtab.js"></script>

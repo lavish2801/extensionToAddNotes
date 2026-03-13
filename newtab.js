@@ -69,6 +69,11 @@
   const listEl = document.getElementById('undone-list');
   const emptyEl = document.getElementById('empty-message');
   const openLink = document.getElementById('open-extension');
+  const noteOverlay = document.getElementById('note-overlay');
+  const noteOverlayText = document.querySelector('.note-overlay-text');
+  const noteOverlayClose = document.querySelector('.note-overlay-close');
+  const noteOverlayBackdrop = document.querySelector('.note-overlay-backdrop');
+  const todoTitleEl = document.getElementById('todo-title');
   const datetimeDateEl = document.getElementById('datetime-date');
   const datetimeTimeEl = document.getElementById('datetime-time');
 
@@ -90,8 +95,13 @@
   function render(notes) {
     const withIndex = notes.map((n, i) => ({ note: n, idx: i }));
     const undone = withIndex.filter((x) => !x.note.done);
+    if (todoTitleEl) {
+      const count = undone.length;
+      todoTitleEl.textContent = count === 0
+        ? 'To Do'
+        : `To Do (${count} task${count === 1 ? '' : 's'} pending)`;
+    }
     listEl.innerHTML = '';
-    listEl.classList.toggle('undone-list-multi', undone.length > 5);
     if (undone.length === 0) {
       emptyEl.hidden = false;
       return;
@@ -123,11 +133,33 @@
       const text = document.createElement('span');
       text.className = 'undone-item-text';
       text.textContent = note.text;
+      if (note.text.length > 50) text.title = 'Click to see full note';
+      text.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (noteOverlayText && noteOverlay) {
+          noteOverlayText.textContent = note.text;
+          noteOverlay.hidden = false;
+          noteOverlay.removeAttribute('aria-hidden');
+        }
+      });
       li.appendChild(checkbox);
       li.appendChild(text);
       listEl.appendChild(li);
     });
   }
+
+  function closeNoteOverlay() {
+    if (noteOverlay) {
+      noteOverlay.hidden = true;
+      noteOverlay.setAttribute('aria-hidden', 'true');
+    }
+  }
+  if (noteOverlayClose) noteOverlayClose.addEventListener('click', closeNoteOverlay);
+  if (noteOverlayBackdrop) noteOverlayBackdrop.addEventListener('click', closeNoteOverlay);
+
+  // Ensure overlay is hidden on load (in case CSS or HTML is overridden)
+  if (noteOverlay) noteOverlay.hidden = true;
 
   chrome.storage.local.get(['notes', 'keepDoneFor'], (result) => {
     let notes = normalizeNotes(result.notes);

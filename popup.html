@@ -42,6 +42,17 @@
       </select>
     </footer>
   </div>
+  <div id="edit-overlay" class="edit-overlay" hidden aria-hidden="true">
+    <div class="edit-overlay-backdrop"></div>
+    <div class="edit-overlay-window">
+      <h2 class="edit-overlay-title">Edit note</h2>
+      <textarea id="edit-note-input" class="edit-note-input" rows="4" placeholder="Note text..."></textarea>
+      <div class="edit-overlay-actions">
+        <button type="button" id="edit-cancel-btn" class="btn-edit-cancel">Cancel</button>
+        <button type="button" id="edit-save-btn" class="btn-edit-save">Save</button>
+      </div>
+    </div>
+  </div>
   <audio id="success-sound" src="success.wav" preload="auto"></audio>
   <script src="popup.js"></script>
 </body>

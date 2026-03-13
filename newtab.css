@@ -243,6 +243,31 @@ body {
   }
 }
 
+.undone-list-wrap {
+  max-height: 320px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.undone-list-wrap::-webkit-scrollbar {
+  width: 6px;
+}
+
+.undone-list-wrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.undone-list-wrap::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+.undone-list-wrap::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
 #undone-list {
   list-style: none;
   padding: 0;
@@ -250,19 +275,9 @@ body {
   width: 100%;
 }
 
-#undone-list.undone-list-multi {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-}
-
-#undone-list.undone-list-multi .undone-item {
-  margin-bottom: 0;
-}
-
 .undone-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
@@ -291,6 +306,102 @@ body {
 .undone-item-text {
   flex: 1;
   min-width: 0;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.undone-item-text:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.undone-item .undone-checkbox {
+  margin-top: 0.15rem;
+}
+
+/* Note overlay — full note with scroll; only visible when opened for a note */
+.note-overlay[hidden] {
+  display: none !important;
+  pointer-events: none;
+}
+
+.note-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.note-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.note-overlay-window {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  max-height: 60vh;
+  background: rgba(30, 41, 59, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  padding: 1rem 2rem 1rem 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-overlay-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.note-overlay-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.note-overlay-text {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.95);
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding-right: 0.25rem;
+}
+
+.note-overlay-text::-webkit-scrollbar {
+  width: 5px;
+}
+
+.note-overlay-text::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
 }
 
 /* Checkbox — animated */

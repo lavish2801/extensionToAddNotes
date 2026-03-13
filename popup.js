@@ -145,17 +145,64 @@ noteForm.onsubmit = (e) => {
   });
 };
 
-// Edit note
-function editNote(idx, oldNote) {
-  const newNote = prompt('Edit your note:', oldNote);
-  if (newNote !== null) {
-    chrome.storage.local.get(['notes'], (result) => {
-      const notes = normalizeNotes(result.notes);
-      if (idx >= 0 && idx < notes.length) notes[idx].text = newNote;
-      chrome.storage.local.set({ notes }, loadNotes);
-    });
+// Edit note — custom modal
+const editOverlay = document.getElementById('edit-overlay');
+const editNoteInput = document.getElementById('edit-note-input');
+const editCancelBtn = document.getElementById('edit-cancel-btn');
+const editSaveBtn = document.getElementById('edit-save-btn');
+const editBackdrop = document.querySelector('.edit-overlay-backdrop');
+
+let editNoteIndex = -1;
+
+function openEditModal(idx, currentText) {
+  editNoteIndex = idx;
+  if (editNoteInput) editNoteInput.value = currentText || '';
+  if (editOverlay) {
+    editOverlay.hidden = false;
+    editOverlay.removeAttribute('aria-hidden');
+    editNoteInput.focus();
   }
 }
+
+function closeEditModal() {
+  editNoteIndex = -1;
+  if (editOverlay) {
+    editOverlay.hidden = true;
+    editOverlay.setAttribute('aria-hidden', 'true');
+  }
+}
+
+function editNote(idx, oldNote) {
+  openEditModal(idx, oldNote);
+}
+
+if (editSaveBtn) {
+  editSaveBtn.addEventListener('click', () => {
+    if (editNoteIndex < 0 || !editNoteInput) return;
+    const newText = editNoteInput.value.trim();
+    chrome.storage.local.get(['notes'], (result) => {
+      const notes = normalizeNotes(result.notes);
+      if (editNoteIndex >= 0 && editNoteIndex < notes.length) {
+        notes[editNoteIndex].text = newText;
+        chrome.storage.local.set({ notes }, () => {
+          loadNotes();
+          closeEditModal();
+        });
+      } else {
+        closeEditModal();
+      }
+    });
+  });
+}
+if (editCancelBtn) editCancelBtn.addEventListener('click', closeEditModal);
+if (editBackdrop) editBackdrop.addEventListener('click', closeEditModal);
+
+if (editNoteInput) {
+  editNoteInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeEditModal();
+  });
+}
+if (editOverlay) editOverlay.hidden = true;
 
 // Delete note
 function deleteNote(idx) {

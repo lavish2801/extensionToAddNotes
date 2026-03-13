@@ -406,3 +406,112 @@ button.edit-btn svg {
   border-color: var(--popup-accent);
   box-shadow: 0 0 0 2px var(--popup-accent-subtle);
 }
+
+/* Edit note overlay */
+.edit-overlay[hidden] {
+  display: none !important;
+  pointer-events: none;
+}
+
+.edit-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.edit-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+.edit-overlay-window {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  background: var(--popup-surface);
+  border-radius: var(--popup-radius);
+  border: 1px solid var(--popup-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.edit-overlay-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--popup-text);
+}
+
+.edit-note-input {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.45;
+  font-family: inherit;
+  color: var(--popup-text);
+  background: var(--popup-bg);
+  border: 1px solid var(--popup-border);
+  border-radius: var(--popup-radius-sm);
+  resize: vertical;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.edit-note-input::placeholder {
+  color: var(--popup-text-muted);
+}
+
+.edit-note-input:focus {
+  outline: none;
+  border-color: var(--popup-accent);
+  box-shadow: 0 0 0 2px var(--popup-accent-subtle);
+}
+
+.edit-overlay-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.btn-edit-cancel {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--popup-text-muted);
+  background: var(--popup-bg);
+  border: 1px solid var(--popup-border);
+  border-radius: var(--popup-radius-sm);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn-edit-cancel:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+.btn-edit-save {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--popup-accent);
+  border: none;
+  border-radius: var(--popup-radius-sm);
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+
+.btn-edit-save:hover {
+  background: var(--popup-accent-hover);
+  box-shadow: 0 2px 6px rgba(14, 165, 233, 0.3);
+}
